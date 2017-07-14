@@ -1,0 +1,24 @@
+{
+  "name": "node-zerotier-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-zerotier-utils": "github:laduke/node-zerotier-utils"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "sinon": "^2.3.7",
+    "standard": "^10.0.2",
+    "tap-difflet": "^0.7.0",
+    "tape": "^4.7.0",
+    "tape-watch": "^2.3.0",
+    "wait-on": "^2.0.2"
+  }
+}
