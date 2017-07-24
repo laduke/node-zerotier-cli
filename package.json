@@ -10,7 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-zerotier-utils": "github:laduke/node-zerotier-utils"
+    "chalk": "^2.0.1",
+    "cli-table": "^0.3.1",
+    "dotenv": "^4.0.0",
+    "node-zerotier-utils": "github:laduke/node-zerotier-utils",
+    "pad": "^1.1.0",
+    "table": "^4.0.1",
+    "vorpal": "^1.12.0",
+    "vorpal-grep": "^0.2.0",
+    "vorpal-less": "0.0.13"
   },
   "devDependencies": {
     "eslint": "^4.2.0",
