@@ -2,32 +2,41 @@ var chalk = require('chalk')
 var { table } = require('table')
 var pad = require('pad') // LOL
 
-function listPeers (ztOne) {
+var { mergeEntities } = require('./util')
+
+function listPeers (ztOne, db) {
   return function (vorpal, options) {
     vorpal
       .command('peers ', 'lists peers')
       .option('-a, --active', 'exclude inactive nodes')
       .option('-p, --planets', 'exclude leaf nodes')
       .option('-l, --leaves', 'exclude planet nodes')
+      .option('-c, --cache', 'print stored peers')
       .action(function (args, callback) {
         this.log('fetching peers')
         var self = this
         ztOne.getPeers(function (err, res) {
           if (err) return callback(err)
 
-          var peers = res
-              .filter(rejectInactive(args.options.active))
-              .filter(rejectLeaves(args.options.planets))
-              .filter(rejectPlanets(args.options.leaves))
-
+          var peers = filterPeers(res, args.options)
           var table = formatPeers(peers)
+
           self.log(table)
           self.log(peers.length + ' peers')
+
+          mergeEntities(db, res, 'peers')
 
           callback()
         })
       })
   }
+}
+
+function filterPeers (peers, options) {
+  return peers
+      .filter(rejectInactive(options.active))
+      .filter(rejectLeaves(options.planets))
+      .filter(rejectPlanets(options.leaves))
 }
 
 function rejectInactive (excludeInactive) {
