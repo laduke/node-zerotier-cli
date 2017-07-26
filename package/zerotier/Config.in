@@ -1,0 +1,6 @@
+config BR2_PACKAGE_ZEROTIER
+	bool "zerotier"
+        help
+          Virtual Networks
+
+          http://foosoftware.org/libfoo/

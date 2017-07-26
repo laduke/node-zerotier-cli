@@ -69,7 +69,6 @@ menu "Compressors and decompressors"
 	source "package/unzip/Config.in"
 	source "package/xz/Config.in"
 	source "package/zip/Config.in"
-	source "package/zstd/Config.in"
 endmenu
 
 menu "Debugging, profiling and benchmark"
@@ -1769,6 +1768,7 @@ endif
 	source "package/xinetd/Config.in"
 	source "package/xl2tp/Config.in"
 	source "package/xtables-addons/Config.in"
+	source "package/zerotier/Config.in"
 	source "package/znc/Config.in"
 
 endmenu
