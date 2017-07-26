@@ -6,18 +6,22 @@ function arrToDict (xs, key) {
   }, {})
 }
 
-function mergeEntities (db, entityArr, key) {
+function mergeEntities (db, entityArr, key, id) {
   db.get(key, function (err, entitiesExisting) {
     if (err) entitiesExisting = {}
 
-    var entitiesDict = arrToDict(entityArr, 'address')
+    var entitiesDict = arrToDict(entityArr, id)
     var entitiesMerged = Object.assign({}, entitiesExisting, entitiesDict)
 
-    db.put([], {
-      [key]: entitiesMerged
-    }, function (err) {
-      if (err) console.err(err)
-    })
+    db.put(
+      [],
+      {
+        [key]: entitiesMerged
+      },
+      function (err) {
+        if (err) console.err(err)
+      }
+    )
   })
 }
 

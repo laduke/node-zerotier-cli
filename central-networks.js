@@ -3,20 +3,20 @@ var { table } = require('table')
 
 var { mergeEntities } = require('./util')
 
-function listNetworks (ztOne, db) {
+function listNetworks2 (ztCentral, db) {
   return function (vorpal, options) {
     vorpal
-      .command('networks ', 'lists networks')
+      .command('central networks ', 'lists central networks')
       .action(function (args, callback) {
         this.log('fetching networks')
         var self = this
-        ztOne.getNetworks(function (err, res) {
+        ztCentral.getNetworks(function (err, res) {
           if (err) return callback(err)
+
+          mergeEntities(db, res, 'centralNetworks', 'id')
 
           var table = formatNetworks(res)
           self.log(table)
-
-          mergeEntities(db, res, 'networks', 'nwid')
 
           callback()
         })
@@ -29,25 +29,19 @@ function formatNetworks (networks) {
     [
       chalk.bold('id'),
       chalk.bold('name'),
-      chalk.bold('status'),
-      chalk.bold('type'),
-      chalk.bold('if'),
-      chalk.bold('allow global'),
-      chalk.bold('allow default')
+      chalk.bold('online members'),
+      chalk.bold('private')
     ]
   ]
 
   var data = networks.map(network => [
     network.id,
-    network.name,
-    network.status,
-    network.type,
-    network.portDeviceName,
-    network.allowGlobal,
-    network.allowDefault
+    network.config.name || '',
+    network.onlineMemberCount,
+    network.config.private
   ])
 
-  return table(headers.concat(data))
+  return table(headers.concat(data), {})
 }
 
-module.exports = { listNetworks: listNetworks }
+module.exports = { listNetworks2: listNetworks2 }

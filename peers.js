@@ -24,7 +24,7 @@ function listPeers (ztOne, db) {
           self.log(table)
           self.log(peers.length + ' peers')
 
-          mergeEntities(db, res, 'peers')
+          mergeEntities(db, res, 'peers', 'address')
 
           callback()
         })
@@ -34,9 +34,9 @@ function listPeers (ztOne, db) {
 
 function filterPeers (peers, options) {
   return peers
-      .filter(rejectInactive(options.active))
-      .filter(rejectLeaves(options.planets))
-      .filter(rejectPlanets(options.leaves))
+    .filter(rejectInactive(options.active))
+    .filter(rejectLeaves(options.planets))
+    .filter(rejectPlanets(options.leaves))
 }
 
 function rejectInactive (excludeInactive) {
