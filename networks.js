@@ -1,7 +1,10 @@
 var chalk = require('chalk')
 var { table } = require('table')
+var { arrToDict } = require('./util')
 
-function listNetworks (ztOne) {
+var { mergeEntities } = require('./util')
+
+function listNetworks (ztOne, db) {
   return function (vorpal, options) {
     vorpal
       .command('networks ', 'lists networks')
@@ -13,6 +16,8 @@ function listNetworks (ztOne) {
 
           var table = formatNetworks(res)
           self.log(table)
+
+          mergeEntities(db, res, 'networks')
 
           callback()
         })
