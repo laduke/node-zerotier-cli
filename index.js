@@ -17,7 +17,6 @@ vorpal
   .use(listPeers(ztOne, db))
   .use(listNetworks(ztOne, db))
   .use(listNetworks2(ztCentral, db))
-
   .command('stored', 'asdf')
   .action(function (args, callback) {
     db.get([], function (err, res) {

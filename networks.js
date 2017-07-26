@@ -1,6 +1,5 @@
 var chalk = require('chalk')
 var { table } = require('table')
-var { arrToDict } = require('./util')
 
 var { mergeEntities } = require('./util')
 
@@ -17,7 +16,7 @@ function listNetworks (ztOne, db) {
           var table = formatNetworks(res)
           self.log(table)
 
-          mergeEntities(db, res, 'networks')
+          mergeEntities(db, res, 'networks', 'nwid')
 
           callback()
         })
