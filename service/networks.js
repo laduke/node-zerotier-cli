@@ -16,7 +16,7 @@ function list (ztOne, db) {
           var table = formatNetworks(res)
           self.log(table)
 
-          mergeEntities(db, res, 'networks', 'nwid')
+          mergeEntities(db, res, ['networks'], 'nwid')
 
           callback()
         })

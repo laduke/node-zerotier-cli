@@ -7,6 +7,7 @@ var { ztOne, ztCentral } = require('./setup')
 
 var service = require('./service')
 var central = require('./central')
+var networkPeers = require('./network-peers')
 
 var level = require('level')
 var Pathwise = require('level-pathwise')
@@ -18,6 +19,7 @@ vorpal
   .use(service.status.list(ztOne, db))
   .use(central.networks.list(ztCentral, db))
   .use(central.members.list(ztCentral, db))
+  .use(networkPeers(db))
 
   .command('stored', 'asdf')
   .action(function (args, callback) {
