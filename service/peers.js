@@ -2,12 +2,12 @@ var chalk = require('chalk')
 var { table } = require('table')
 var pad = require('pad') // LOL
 
-var { mergeEntities } = require('./util')
+var { mergeEntities } = require('../util')
 
-function listPeers (ztOne, db) {
+function list (ztOne, db) {
   return function (vorpal, options) {
     vorpal
-      .command('peers ', 'lists peers')
+      .command('service peers ', 'lists peers')
       .option('-a, --active', 'exclude inactive nodes')
       .option('-p, --planets', 'exclude leaf nodes')
       .option('-l, --leaves', 'exclude planet nodes')
@@ -94,4 +94,4 @@ function formatPaths (paths) {
     .join('')
 }
 
-module.exports = { listPeers: listPeers }
+module.exports = { list: list }
