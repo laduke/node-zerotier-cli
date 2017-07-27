@@ -25,7 +25,7 @@ function list (ztCentral, db) {
         ztCentral.getMembers(args.networkId, function (err, res) {
           if (err) return callback(err)
 
-          mergeEntities(db, res, 'members', 'nodeId')
+          mergeEntities(db, res, ['members', args.networkId], 'nodeId')
 
           var table = formatMembers(res)
           self.log(table)

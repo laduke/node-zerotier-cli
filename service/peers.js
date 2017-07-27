@@ -24,7 +24,7 @@ function list (ztOne, db) {
           self.log(table)
           self.log(peers.length + ' peers')
 
-          mergeEntities(db, res, 'peers', 'address')
+          mergeEntities(db, res, ['peers'], 'address')
 
           callback()
         })
@@ -84,7 +84,8 @@ function formatPeers (peers) {
 }
 
 function formatPaths (paths) {
-  return paths
+  if (!paths) { paths = [] }
+  return Object.values(paths)
     .map(path =>
       Object.entries(path)
         .map(entry => pad(entry.join(': '), 60))
@@ -94,4 +95,4 @@ function formatPaths (paths) {
     .join('')
 }
 
-module.exports = { list: list }
+module.exports = { list: list, formatPeers: formatPeers }

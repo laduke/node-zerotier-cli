@@ -13,7 +13,7 @@ function list (ztCentral, db) {
         ztCentral.getNetworks(function (err, res) {
           if (err) return callback(err)
 
-          mergeEntities(db, res, 'centralNetworks', 'id')
+          mergeEntities(db, res, ['centralNetworks'], 'id')
 
           var table = formatNetworks(res)
           self.log(table)
