@@ -15,6 +15,7 @@ var db = new Pathwise(level('db'))
 vorpal
   .use(service.peers.list(ztOne, db))
   .use(service.networks.list(ztOne, db))
+  .use(service.status.list(ztOne, db))
   .use(central.networks.list(ztCentral, db))
   .use(central.members.list(ztCentral, db))
 
@@ -26,4 +27,8 @@ vorpal
     })
   })
 
-vorpal.delimiter('zt$').use(less).use(grep).show()
+vorpal
+  .delimiter('zt$')
+  .use(less)
+  .use(grep)
+  .show()
