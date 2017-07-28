@@ -1,10 +1,16 @@
 # Setup
 - `git pull https://github.com/laduke/node-zerotier-cli.git`
 - `npm install`
-- Get your ZeroTier authtoken.secret
+- Get your ZeroTier authtoken.secret 
+  - `cat /Library/Application\ Support/ZeroTier/One/authtoken.secret `
 - Get a ZeroTier Central API Token https://my.zerotier.com/
 - `CENTRAL_TOKEN=mycentralapitoken ZT_AUTH=myauthtoken node index.js`
-- or put `CENTRAL_TOKEN=mycentralapitoken ZT_AUTH=myauthtoken ` in a `.env` file
+- or put 
+```
+CENTRAL_TOKEN=mycentralapitoken 
+ZT_AUTH=myauthtoken
+```
+in a `.env` file in the project root
 
 ## Screenshot
 
