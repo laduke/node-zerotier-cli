@@ -1,3 +1,7 @@
+# What's this?
+Command line interface to ZeroTier Central and to your local ZeroTierOne service
+With tab completion and stuff like that.
+
 # Setup
 - `git pull https://github.com/laduke/node-zerotier-cli.git`
 - `npm install`
